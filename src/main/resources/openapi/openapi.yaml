@@ -1,0 +1,50 @@
+openapi: 3.0.1
+info:
+  title: public api
+  version: 1.0.0
+paths:
+  /register/{tenant}:
+    post:
+      summary: create consumer
+      parameters:
+        - name: tenant
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterResponse'
+components:
+  schemas:
+    RegisterRequest:
+      type: object
+      required: [env]
+      properties:
+        env:
+          $ref: '#/components/schemas/Environment'
+    RegisterResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "123abc"
+        expirationTime:
+          type: string
+          format: date-time
+          example: "2024-01-01T00:00:00Z"
+    Environment:
+      type: string
+      enum:
+        - DEV
+        - PROD

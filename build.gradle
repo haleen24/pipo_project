@@ -1,5 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '2.0.20'
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+    id 'org.openapi.generator' version "7.1.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.9.22'
 }
 ext {
     buildNumber = System.getenv("BUILD_NUMBER") ?: "SNAPSHOT"
@@ -13,9 +17,45 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
+    implementation 'org.springdoc:springdoc-openapi-data-rest:1.8.0'
+    implementation 'org.springdoc:springdoc-openapi-kotlin:1.8.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
-    useJUnitPlatform()
+springBoot {
+    mainClass = 'Main.kt'
+}
+
+openApiGenerate {
+    generatorName = "kotlin-spring"
+    inputSpec = "$rootDir/src/main/resources/openapi/openapi.yaml"
+    outputDir = "$buildDir/generated/openapi"
+    apiPackage = "com.example.api"
+    modelPackage = "com.example.model"
+    configOptions = [
+            generateBuilders       : "true",
+            skipSupportingFiles    : "true",
+            hideGenerationTimestamp: "true",
+            useJakartaEe           : 'true',
+            useSpringBoot3         : 'true'
+    ]
+}
+
+compileKotlin {
+    dependsOn tasks.named("openApiGenerate")
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += "$buildDir/generated/openapi/src/main/java"
+        }
+        kotlin {
+            srcDirs += "$buildDir/generated/openapi/src/main/kotlin"
+        }
+    }
 }
