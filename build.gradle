@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'org.openapi.generator' version "7.1.0"
     id 'org.jetbrains.kotlin.jvm' version '1.9.22'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.9.22'
 }
 
 group = 'com.example'
@@ -15,6 +16,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
@@ -38,7 +41,9 @@ openApiGenerate {
             skipSupportingFiles    : "true",
             hideGenerationTimestamp: "true",
             useJakartaEe           : 'true',
-            useSpringBoot3         : 'true'
+            useSpringBoot3         : 'true',
+            interfaceOnly          : 'true',
+            skipDefaultInterface   : 'true'
     ]
 }
 
