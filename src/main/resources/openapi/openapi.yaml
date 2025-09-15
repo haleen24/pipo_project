@@ -3,8 +3,9 @@ info:
   title: public api
   version: 1.0.0
 paths:
-  /register/{tenant}:
+  /consumers/{tenant}:
     post:
+      operationId: createConsumer
       summary: create consumer
       parameters:
         - name: tenant
@@ -25,11 +26,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterResponse'
+  /consumers/{id}:
+    delete:
+      operationId: deleteConsumer
+      summary: delete consumer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: OK
+
 components:
   schemas:
     RegisterRequest:
       type: object
-      required: [env]
+      required: [ env ]
       properties:
         env:
           $ref: '#/components/schemas/Environment'
