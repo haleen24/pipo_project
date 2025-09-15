@@ -3,7 +3,7 @@ info:
   title: public api
   version: 1.0.0
 paths:
-  /consumers/{tenant}:
+  /pipo/consumers/{tenant}:
     post:
       operationId: createConsumer
       summary: create consumer
@@ -26,7 +26,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterResponse'
-  /consumers/{id}:
+  /pipo/consumers/{id}:
     delete:
       operationId: deleteConsumer
       summary: delete consumer
