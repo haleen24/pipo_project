@@ -13,6 +13,9 @@ spring:
     password: ${PG_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-#  liquibase:
-#    enabled: true
-#    change-log: classpath:db/changelog/db.changelog-master.yaml
+  spring:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
+      password: ${REDIS_PASSWORD}
+      username: ${REDIS_USER}
