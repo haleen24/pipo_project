@@ -26,12 +26,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterResponse'
-  /pipo/consumers/{id}:
+  /pipo/consumers/{login}:
     delete:
       operationId: deleteConsumer
       summary: delete consumer
       parameters:
-        - name: id
+        - name: login
           in: path
           required: true
           schema:
