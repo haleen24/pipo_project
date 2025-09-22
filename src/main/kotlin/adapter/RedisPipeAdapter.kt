@@ -1,6 +1,5 @@
 package hse.pipo.adapter
 
-import adapter.PipeAdapter
 import hse.pipo.dto.PipeAuthority
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Component

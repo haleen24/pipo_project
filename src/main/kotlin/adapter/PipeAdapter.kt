@@ -1,4 +1,4 @@
-package adapter
+package hse.pipo.adapter
 
 import hse.pipo.dto.PipeAuthority
 
