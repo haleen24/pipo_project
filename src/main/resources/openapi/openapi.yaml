@@ -51,13 +51,12 @@ components:
     RegisterResponse:
       type: object
       properties:
-        id:
+        login:
           type: string
           example: "123abc"
-        expirationTime:
+        password:
           type: string
-          format: date-time
-          example: "2024-01-01T00:00:00Z"
+          example: "password123"
     Environment:
       type: string
       enum:
