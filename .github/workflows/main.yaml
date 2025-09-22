@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Build Jar
-          path: build/libs/pipo_project-0.0.1-SNAPSHOT-plain.jar
+          path: build/libs/*.jar
