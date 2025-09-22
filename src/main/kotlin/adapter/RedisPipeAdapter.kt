@@ -1,6 +1,7 @@
-package org.example.adapter
+package hse.pipo.adapter
 
-import org.example.dto.PipeAuthority
+import adapter.PipeAdapter
+import hse.pipo.dto.PipeAuthority
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Component
 import java.util.*

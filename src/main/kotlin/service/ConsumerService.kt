@@ -1,6 +1,6 @@
-package org.example.service
+package hse.pipo.service
 
-import org.example.dto.PipeAuthority
+import hse.pipo.dto.PipeAuthority
 
 interface ConsumerService {
     fun getConnectionAuthority(tenant: String): PipeAuthority

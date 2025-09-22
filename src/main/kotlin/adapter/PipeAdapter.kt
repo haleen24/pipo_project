@@ -1,6 +1,6 @@
-package org.example.adapter
+package adapter
 
-import org.example.dto.PipeAuthority
+import hse.pipo.dto.PipeAuthority
 
 interface PipeAdapter {
     fun createConsumerAuthority(tenant: String): PipeAuthority?
