@@ -1,11 +1,12 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.20'
 }
-
-buildNumber = System.getenv("BUILD_NUMBER") ?: "SNAPSHOT"
+ext {
+    buildNumber = System.getenv("BUILD_NUMBER") ?: "SNAPSHOT"
+}
 
 group = 'hse.pipo'
-version = '0.0-' + buildNumber
+version = "0.0-${buildNumber}"
 
 repositories {
     mavenCentral()

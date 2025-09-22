@@ -1,4 +1,4 @@
-package org.example
+package hse.pipo
 
 fun main() {
 }
