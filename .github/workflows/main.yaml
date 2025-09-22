@@ -19,6 +19,8 @@ jobs:
           distribution: 'temurin'
       - name: Build
         run: ./gradlew build
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
       - name: upload build artifact
         uses: actions/upload-artifact@v4
         with:

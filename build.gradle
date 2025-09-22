@@ -2,8 +2,10 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.20'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+buildNumber = project.findProject("BUILD_NUMBER") ?: "SNAPSHOT"
+
+group = 'hse.pipo'
+version = '0.0-' + buildNumber
 
 repositories {
     mavenCentral()
