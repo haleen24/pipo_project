@@ -2,7 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.0.20'
 }
 
-buildNumber = project.findProject("BUILD_NUMBER") ?: "SNAPSHOT"
+buildNumber = project.findProperty("BUILD_NUMBER") ?: "SNAPSHOT"
 
 group = 'hse.pipo'
 version = '0.0-' + buildNumber
