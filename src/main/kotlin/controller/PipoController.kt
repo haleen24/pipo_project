@@ -2,6 +2,7 @@ package hse.pipo.controller
 
 import hse.pipo.api.PipoApi
 import hse.pipo.mapper.PipeAuthorityMapper
+import hse.pipo.model.Environment
 import hse.pipo.model.RegisterRequest
 import hse.pipo.model.RegisterResponse
 import hse.pipo.service.ConsumerService
@@ -21,7 +22,8 @@ class PipoController(
         return ResponseEntity.status(HttpStatus.CREATED).body(registerResponse)
     }
 
-    override fun deleteConsumer(id: String): ResponseEntity<Unit> {
-        throw NotImplementedError()
+    override fun deleteConsumer(login: String): ResponseEntity<Unit> {
+        consumerService.deleteConsumer(login)
+        return ResponseEntity.noContent().build()
     }
 }

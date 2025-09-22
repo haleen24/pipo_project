@@ -25,9 +25,9 @@ class RedisPipeAdapter(
         } else null
     }
 
-    override fun deleteConsumer(username: String) {
+    override fun deleteConsumer(login: String) {
         redisTemplate.execute { connection ->
-            connection.execute("ACL", "DELUSER".toByteArray(), username.toByteArray())
+            connection.execute("ACL", "DELUSER".toByteArray(), login.toByteArray())
         }
     }
 }

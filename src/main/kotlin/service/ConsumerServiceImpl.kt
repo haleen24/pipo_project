@@ -10,4 +10,8 @@ class ConsumerServiceImpl(
 ) : ConsumerService {
     override fun getConnectionAuthority(tenant: String, env: String): PipeAuthority? =
         pipeAdapter.createConsumerAuthority("$tenant//$env")
+
+    override fun deleteConsumer(login: String) {
+        pipeAdapter.deleteConsumer(login)
+    }
 }
