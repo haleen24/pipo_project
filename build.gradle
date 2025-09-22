@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.9.22'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.9.22'
 }
+
 ext {
     buildNumber = System.getenv("BUILD_NUMBER") ?: "SNAPSHOT"
 }
@@ -27,6 +28,10 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.8.0'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.8.0'
     implementation 'org.springdoc:springdoc-openapi-kotlin:1.8.0'
+    implementation "org.mapstruct:mapstruct:1.6.3"
+
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.6.3"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -38,8 +43,8 @@ openApiGenerate {
     generatorName = "kotlin-spring"
     inputSpec = "$rootDir/src/main/resources/openapi/openapi.yaml"
     outputDir = "$buildDir/generated/openapi"
-    apiPackage = "com.example.api"
-    modelPackage = "com.example.model"
+    apiPackage = "hse.pipo.api"
+    modelPackage = "hse.pipo.model"
     configOptions = [
             generateBuilders       : "true",
             skipSupportingFiles    : "true",
